@@ -14,7 +14,7 @@ void precision(float a, float b){ // Funcao precision para comecar a calcular o 
 
 float calc_rastrigin(float *arr, int n){ // Funcao para calcular o rastrigin
     float soma = 0; // Declarando e inicializando a variavel pro somatorio
-    printf("Dados passados: "); // Mostrando no terminal os dados que estao sendo lidos do arquivo
+    printf("Dados lidos: "); // Mostrando no terminal os dados que estao sendo lidos do arquivo
     for(int i=0; i<n; i++){ // ..
         printf("%f ", arr[i]); // ..
         soma += pow(arr[i],2) - 10*cos(2*PI*(arr[i])); // Primeira parte do calculo de rastrigin
@@ -24,7 +24,7 @@ float calc_rastrigin(float *arr, int n){ // Funcao para calcular o rastrigin
 
 float calc_sphere(float *arr, int n){ // Funcao para calcular a sphere
     float soma = 0; // Declarando e inicializando a variavel pro somatorio
-    printf("Dados passados: "); // Mostrando no terminal os dados que estao sendo lidos do arquivo
+    printf("Dados lidos: "); // Mostrando no terminal os dados que estao sendo lidos do arquivo
     for(int i=0; i<n; i++){ // ..
         printf("%f ", arr[i]); // ..
         soma += pow(arr[i], 2); // Calculo da sphere
@@ -33,6 +33,7 @@ float calc_sphere(float *arr, int n){ // Funcao para calcular a sphere
 }
 
 int rastrigin(){ // Funcao para dar inicio ao rastrigin
+    printf("\n");
     FILE *arquivo; // Declaracao do arquivo 
     float *numeros, *esperados; // Declaracao dos ponteiros para guardarmos os numeros lidos e os resultados esperados
     float numero, numero_esperado; // Declaracao das variaveis do numero lido e o resultado esperado
@@ -87,7 +88,7 @@ int rastrigin(){ // Funcao para dar inicio ao rastrigin
             }
             pos = tamanho_rastrigin; // Salvando a posicao em que estamos no array
             float soma = calc_rastrigin(numeros+last_pos, tamanho_rastrigin-last_pos); // Chamando a funcao para calcular o rastrigin, e guardando-a em "soma"
-            printf("\nValor esperado %f | Valor encontrado %f\n", numero, soma); // Mostrando ao usuario o dado esperado (que pegamos agora) e comparando com o que encontramos no calculo
+            printf("\nValor esperado %f | Valor encontrado %f\n\n", numero, soma); // Mostrando ao usuario o dado esperado (que pegamos agora) e comparando com o que encontramos no calculo
             precision(numero, soma); // Enviando o numero esperado junto com o nosso calculo para dar inicio ao calculo da precisao
             last_pos = tamanho_rastrigin; // Salvando a posicao em que estamos para utilizar mais tarde
             esperados[esperados_rastrigin] = numero; // Colocando o resultado esperado (lido no arquivo) no array de resultados esperados
@@ -106,6 +107,7 @@ int rastrigin(){ // Funcao para dar inicio ao rastrigin
 }
 
 int sphere(){ // Funcao para dar inicio a sphere
+    printf("\n");
     FILE *arquivo; // Declaracao do arquivo 
     float *numeros, *esperados; // Declaracao dos ponteiros para guardarmos os numeros lidos e os resultados esperados
     float numero, numero_esperado; // Declaracao das variaveis do numero lido e o resultado esperado
@@ -160,7 +162,7 @@ int sphere(){ // Funcao para dar inicio a sphere
             }
             pos = tamanho_sphere; // Salvando a posicao em que estamos no array
             float soma = calc_sphere(numeros+last_pos, tamanho_sphere-last_pos); // Chamando a funcao para calcular a sphere, e guardando-a em "soma"
-            printf("\nValor esperado %f | Valor encontrado %f\n", numero, soma); // Mostrando ao usuario o dado esperado (que pegamos agora) e comparando com o que encontramos no calculo
+            printf("\nValor esperado %f | Valor encontrado %f\n\n", numero, soma); // Mostrando ao usuario o dado esperado (que pegamos agora) e comparando com o que encontramos no calculo
             precision(numero, soma); // Enviando o numero esperado junto com o nosso calculo para dar inicio ao calculo da precisao
             last_pos = tamanho_sphere; // Salvando a posicao em que estamos para utilizar mais tarde
             esperados[esperados_sphere] = numero; // Colocando o resultado esperado (lido no arquivo) no array de resultados esperados
